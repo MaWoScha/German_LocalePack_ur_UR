@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  German
+ * @package   German_LocalePack
+ * @authors   MaWoScha <mawoscha@siempro.co, http://www.siempro.co/>
+ * @developer MaWoScha <mawoscha@siempro.co, http://www.siempro.co/>
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <German_LocalePackUr>
+            <version>0.4.0</version>
+            <locale>ur_UR</locale>
+            <title>Urdu (General) Language Pack</title>
+            <link_git>https://github.com/MaWoScha/German_LocalePack_ur_UR</link_git>
+            <link_mage></link_mage>
+        </German_LocalePackUr>
+    </modules>
+
+    <global>
+        <models>
+            <localepackur>
+                <class>German_LocalePackUr_Model</class>
+            </localepackur>
+        </models>
+        <helpers>
+            <localepackur>
+                <class>German_LocalePackUr_Helper</class>
+            </localepackur>
+        </helpers>
+        <blocks>
+            <localepackur>
+                <class>German_LocalePackUr_Block</class>
+            </localepackur>
+        </blocks>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <localepackur>
+                        <class>localepackur/observer</class>
+                        <method>adminhtmlControllerActionPredispatchStart</method>
+                    </localepackur>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
+        <resources>
+            <localepackur_setup>
+                <setup>
+                    <module>German_LocalePackUr</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </localepackur_setup>
+        </resources>
+    </global>
+	
+    <default>
+        <localepackur>
+             <notification>
+                <url>https://github.com/MaWoScha/German_LocalePack_ur_UR</url>
+            </notification>
+        </localepackur>
+        <magesetup>
+            <default_country>PK</default_country>
+        </magesetup>
+    </default>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <localepackur>
+                    <files>
+                    	<default>localepackur.xml</default>
+                    </files>
+                </localepackur>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <German_LocalePackUr>
+                    <files>
+                        <default>German_LocaleUr.csv</default>
+                    </files>
+                </German_LocalePackUr>
+            </modules>
+        </translate>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children> <!--
+                                        <localepacks translate="title" module="localepackur">
+                                            <title>Language Packs</title>
+                                    		<children> -->
+                                        		<localepackur translate="title" module="localepackur">
+                                            		<title>Urdu (General) Language Pack</title>
+                                        		</localepackur> <!--
+                                    		</children>
+                                        </localepacks> -->
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+</config>
